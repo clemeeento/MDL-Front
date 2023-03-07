@@ -18,8 +18,8 @@ eslint en donnant accès
         - nom
         - société
         - pays
-        (auto généré coté serveur) - date de création
-        (auto généré coté serveur) - id = identifiant unique
+        - date de création (auto généré coté serveur)
+        - id = identifiant unique (auto généré coté serveur)
     - Modification d'un client
 
 - Mettre les controles de champs pour la creation de client
