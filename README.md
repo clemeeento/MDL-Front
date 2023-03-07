@@ -1,7 +1,7 @@
 # Methode Developpement Logiciel TD2
 
 - Créer un nouveau projet "Front" en l'initialisant dans github ou gitlab et en ajoutant 
-eslint en donnant accès à manoel.deligny@gmail.com
+eslint en donnant accès
 - Utiliser le .gitignore pour limiter le nombre de fichier sur votre projet
 
 - Utiliser le module "express" pour créer un projet web
