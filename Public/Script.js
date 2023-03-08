@@ -2,7 +2,7 @@
 
 function getData()
 {
-    let users = fs.readFileSync("users.json");
+    let users = fs.readFileSync("../users.json");
     const tableau = JSON.parse(users);
     return tableau;
 }*/
