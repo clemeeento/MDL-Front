@@ -3,7 +3,7 @@ const dataL = require("../Data/DataLater");
 const business = {
     
     getAllCustomers : function () {
-        return dataL.getAllUsers;
+        return dataL.getAllUsers();
     }
 };
 
