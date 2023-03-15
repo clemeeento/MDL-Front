@@ -12,8 +12,6 @@ const apiServ = {
             res.json(customers);
         });
     }
-
-    
 };
 
 
