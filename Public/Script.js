@@ -1,11 +1,3 @@
-/*const fs = require("fs");
-
-function getData()
-{
-    let users = fs.readFileSync("../users.json");
-    const tableau = JSON.parse(users);
-    return tableau;
-}*/
 
 function getData()
 {
