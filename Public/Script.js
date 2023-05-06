@@ -1,25 +1,20 @@
-async function getAjaxResponse(url) {
-    return new Promise(function(resolve, reject) {
-      $.get(url, {}, function(data, status, xhr) {
-        if (status === "success") {
+function getAjaxResponse(number, page){
+  return new Promise((resolve, reject) => {
+      const urlApi = "http://localhost:3001/api/customers?number=" + number + "&page=" + page; 
+      $.get( urlApi, {} )
+      .done(function( data ) {
           resolve(data);
-        } else {
-          reject(Error(xhr.statusText));
-        }
-      }, "json");
-    });
+      })
+      .fail(function(error) {
+          reject(new Error(`Une erreur est survenue lors de la récupération des données: ${error.statusText}`));
+      }); 
+  }); 
 }
 
-
-document.addEventListener("DOMContentLoaded", async function() {
-
-    console.log("Le document est chargé");
+async function table(number,page){
+  const resp = await getAjaxResponse(number,page);
   
-    const url = "http://localhost:3001/api/customers";
-  
-    const resp = await getAjaxResponse(url);
-  
-    const customers = resp;
+    const customers = resp.result;
   
     const tableBody = document.getElementById("customers");
     
@@ -50,12 +45,10 @@ document.addEventListener("DOMContentLoaded", async function() {
       const createdAtCell = row.insertCell();
       createdAtCell.innerHTML = customer.created_at;
     }
-});
+}
 
-// addEventListener("DOMContentLoaded",async function () {
-//     console.log("Le document est chargé");
-//     const url = "https://localhost:3001api/customers";
-//     const data = await getAjaxResponse(url);
-//     const users = JSON.parse(data);
-//     $("#client").loadTemplate($("#tmpClient"),users);
-// });
+
+document.addEventListener("DOMContentLoaded", async function() {
+  table(15,5);
+    
+});
