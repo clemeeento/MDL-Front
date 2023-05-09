@@ -45,10 +45,47 @@ async function table(number,page){
     const emailCell = row.insertCell();
     emailCell.innerHTML = customer.email;
 
+    const modifCell = row.insertCell();
+    const modifLink = document.createElement('a');
+    modifLink.innerText = 'Modifier';
+    modifLink.href = 'Modifier.html';
+    modifCell.appendChild(modifLink);
+    modifCell.addEventListener('click', (event) => {
+      event.preventDefault();
+      window.location.href = 'Modifier.html';
+    });
+
+    const suppCell = row.insertCell();
+    const suppLink = document.createElement('a');
+    suppLink.innerText = 'Supprimer';
+    suppLink.href = '#';
+    suppCell.appendChild(suppLink);
+    suppCell.addEventListener('click', (event) => {
+      event.preventDefault();
+      supprimer(customer.id);
+    });
     // const createdAtCell = row.insertCell();
     // createdAtCell.innerHTML = customer.created_at;
   }
 }
+
+function supprimer(customerid) {
+  const url="http://localhost:3001/api/customers";
+  $.ajax({
+      url: url,
+      type: 'DELETE',
+      data: customerid,
+      success: function(result) {
+        console.log('Modification effectuée avec succès!');
+        // Redirection vers la page d'accueil
+        // window.location.href = "Liste.html";
+      },
+      error: function(err) {
+        console.error('Erreur lors de la modification:', err);
+      }
+  });
+}
+
 
 function clearTable() {
   const tableBody = document.getElementById("customers");
