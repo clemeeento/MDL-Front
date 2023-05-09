@@ -1,2 +1,1 @@
-# Methode Developpement Logiciel 
-Partie front du projet
+# Methode Developpement Logiciel Front
