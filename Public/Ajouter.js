@@ -6,7 +6,7 @@ function addCustomer(customer) {
     return new Promise((resolve, reject) => {
         $.post(url, customer)
             .done(function(data){
-                resolve(data.result);
+                resolve(data.result);           
             })
             .fail(function(error) {
                 reject(new Error(`Une erreur est survenue lors de l'envoie des données': ${error.statusText}`));
@@ -16,6 +16,7 @@ function addCustomer(customer) {
 
 async function listenAjouter()
 {   
+    const date = new Date();
     // Prépare les données
     const customer = {
         "first" : document.getElementById("first").value,   
@@ -23,7 +24,8 @@ async function listenAjouter()
         "last" : document.getElementById("last").value,
         "company" : document.getElementById("company").value,
         "country" : document.getElementById("country").value,
-        "created_at" : new Date()};
+        "created_at" : date.toISOString()};
         
     addCustomer(customer); 
+    window.location.href = "Liste.html";
 }
