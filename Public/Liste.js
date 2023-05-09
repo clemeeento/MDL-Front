@@ -1,12 +1,11 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
-let page = 1;
-const number = 15;
+var page = 1;
+const number = 20;
 
 document.addEventListener("DOMContentLoaded", async function() {
-  
     table(number,1);
-  
+    menuDeroulant();
 });
 
 function getCustomers(number, page){
@@ -101,11 +100,35 @@ function pageSuivante(){
     page=page+1;
     clearTable();
     table(number,page);
+    selectNumber.value = page;
 }
 
 function pagePrecedente(){
     page=page-1;
     clearTable();
     table(number,page);
+    selectNumber.value = page;
+}
+
+async function menuDeroulant(){
+    const resp = await getCustomers(number,1);
+    const pages = resp.totalPages;
+    const selectNumber = document.getElementById("selectNumber");
+    
+    for (let i = 1; i <= pages; i++) {
+        const option = document.createElement("option");
+        option.value = i;
+        option.text = i;
+        selectNumber.add(option);
+    }
+    selectNumber.value = page;
+    
+    selectNumber.addEventListener("change", (event) => {
+        let data = event.target.value;
+        page=parseInt(data);
+        clearTable();
+        table(number,page);
+    });
+
 }
 
