@@ -6,8 +6,6 @@ addEventListener("DOMContentLoaded",
         const id = processUser(); 
         // Chargement du client à modifier
         client(1,id);
-        // Modification des informations
-        //await listenModif();
     });
 
 
@@ -29,7 +27,7 @@ function modifCustomer(customer) {
     const url="http://localhost:3001/api/customers";
     $.ajax({
         url: url,
-        type: "PUT",
+        type: "put",
         data: customer,
         success: function(result) {
             console.log("Modification effectuée avec succès!");
@@ -52,11 +50,11 @@ function processUser()
     return id;
 }
 
-async function listenModif()
+async function listenModif(id)
 {   
     // Prépare les données
     const customer = {
-        "id" : document.getElementById("id").textContent,
+        "id" : id,
         "first" : document.getElementById("first").value,   
         "email" : document.getElementById("email").value,
         "last" : document.getElementById("last").value,
@@ -65,17 +63,14 @@ async function listenModif()
 
     // Modification des données sur le serveur
     modifCustomer(customer); 
-    alert("Informations envoyées avec succés, le client a été modifié !\nRedirection vers la page d'accueil");
-    // Redirection vers la page d'accueil
-    window.location.href="Liste.html";
 }
 
 async function client(number,page){
     const resp = await getCustomers(number,page);
     
-    const customer = resp.result;
-    
-    console.log(customer.id);
+    const data = resp.result;
+
+    const customer = data[0];
 
     document.getElementById("last").value = customer.last;
     document.getElementById("first").value = customer.first;
