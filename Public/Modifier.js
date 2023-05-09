@@ -25,6 +25,7 @@ function getCustomers(number, page){
 
 function modifCustomer(customer) {
     const url="http://localhost:3001/api/customers";
+    console.log(customer);
     $.ajax({
         url: url,
         type: "put",
