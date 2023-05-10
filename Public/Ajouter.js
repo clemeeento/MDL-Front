@@ -1,6 +1,3 @@
-/* eslint-disable no-undef */
-/* eslint-disable no-unused-vars */
-
 function addCustomer(customer) {
     const url="http://localhost:3001/api/customers";
     return new Promise((resolve, reject) => {
@@ -17,7 +14,7 @@ function addCustomer(customer) {
 async function listenAjouter()
 {   
     const date = new Date();
-    // Prépare les données
+    
     const customer = {
         "first" : document.getElementById("first").value,   
         "email" : document.getElementById("email").value,

@@ -1,5 +1,3 @@
-/* eslint-disable no-undef */
-/* eslint-disable no-unused-vars */
 var page = 1;
 const number = 20;
 
@@ -129,6 +127,5 @@ async function menuDeroulant(){
         clearTable();
         table(number,page);
     });
-
 }
 

@@ -1,12 +1,7 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-undef */
-addEventListener("DOMContentLoaded",
-    async function(){
-        // Récupération des variables passées via l'URL
-        const id = processUser(); 
-        // Chargement du client à modifier
-        client(1,id);
-    });
+addEventListener("DOMContentLoaded",async function(){
+    const id = processUser(); 
+    client(1,id);
+});
 
 
 function getCustomers(number, page){
@@ -42,18 +37,14 @@ function modifCustomer(customer) {
 
 function processUser()
 {
-    // Récupère ce qu'il y a après le & dans l'URL
     var parameters = location.search.substring(1).split("&");
-    // Divise la partie gauche et droite du égal
     var temp = parameters[0].split("=");
-    // Récupère la valeur de la variable
     const id = decodeURIComponent(temp[1]);
     return id;
 }
 
 async function listenModif(id)
 {   
-    // Prépare les données
     const customer = {
         "id" : id,
         "first" : document.getElementById("first").value,   
@@ -62,7 +53,6 @@ async function listenModif(id)
         "company" : document.getElementById("company").value,
         "country" : document.getElementById("country").value};
 
-    // Modification des données sur le serveur
     modifCustomer(customer); 
 }
 
